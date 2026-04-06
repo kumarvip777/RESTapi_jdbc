@@ -10,7 +10,6 @@ import java.util.List;
 @RequestMapping("/students")
 public class StudentController {
 
-
     private final StudentService service;
 
     public StudentController(StudentService service) {
@@ -19,36 +18,33 @@ public class StudentController {
 
 
     @PostMapping
-    public String saveStudent(@RequestBody Student student) {
-        service.save(student);
-        return "Student saved successfully";
+    public Student saveStudent(@RequestBody Student student) {
+        return service.saveStudent(student);
     }
 
 
     @GetMapping
     public List<Student> getAllStudents() {
-        return service.getAll();
+        return service.getAllStudents();
     }
 
 
     @GetMapping("/{id}")
     public Student getStudentById(@PathVariable Long id) {
-        return service.getById(id);
+        return service.getStudentById(id);
     }
 
 
-    @PutMapping
-    public String updateStudent(@RequestBody Student student) {
-        service.update(student);
-        return "Student updated successfully";
+    @PutMapping("/{id}")
+    public Student updateStudent(@PathVariable Long id,
+                                 @RequestBody Student student) {
+        return service.updateStudent(id, student);
     }
 
 
     @DeleteMapping("/{id}")
     public String deleteStudent(@PathVariable Long id) {
-        service.delete(id);
-        return "Student deleted successfully";
+        service.deleteStudent(id);
+        return "Deleted successfully";
     }
-
-
 }
