@@ -43,8 +43,8 @@ public class StudentService {
         if (student.getAge() != 0)
             existing.setAge(student.getAge());
 
-        if (student.getCourse() != null)
-            existing.setCourse(student.getCourse());
+        if (student.getAddress() != null)
+            existing.setAddress(student.getAddress());
 
         if (student.getDepartment() != null)
             existing.setDepartment(student.getDepartment());

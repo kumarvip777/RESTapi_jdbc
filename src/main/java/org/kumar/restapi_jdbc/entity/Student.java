@@ -20,8 +20,8 @@ public class Student {
     private int age;
     private String department;
     private String phoneNumber;
-    private String address;
+
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "course_id")
-    private Course course;
+    @JoinColumn(name = "address_id", unique = true)
+    private Address address;
 }
