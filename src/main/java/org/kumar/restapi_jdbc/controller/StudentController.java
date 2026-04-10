@@ -1,5 +1,6 @@
 package org.kumar.restapi_jdbc.controller;
 
+import jakarta.validation.Valid;
 import org.kumar.restapi_jdbc.entity.Student;
 import org.kumar.restapi_jdbc.service.StudentService;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class StudentController {
 
 
     @PostMapping
-    public Student saveStudent(@RequestBody Student student) {
+    public Student saveStudent(@Valid @RequestBody Student student) {
         return service.saveStudent(student);
     }
 
@@ -34,10 +35,9 @@ public class StudentController {
         return service.getStudentById(id);
     }
 
-
     @PutMapping("/{id}")
     public Student updateStudent(@PathVariable Long id,
-                                 @RequestBody Student student) {
+                                 @Valid @RequestBody Student student) {
         return service.updateStudent(id, student);
     }
 
